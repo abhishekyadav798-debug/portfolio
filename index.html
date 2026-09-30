@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishek Yadav — Web Developer & CS Student</title>
+<meta name="description" content="Abhishek Yadav — B.Tech IT student at CCSU Meerut. Building web apps with HTML, CSS, JavaScript & C++. Open to internships.">
+<meta property="og:title" content="Abhishek Yadav — Web Developer">
+<meta property="og:description" content="Second-year IT student turning ideas into working web projects. Open to internship opportunities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Scroll progress bar -->
+<div class="scroll-bar" id="scrollBar"></div>
+
+<!-- 3D Background Canvas -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <header class="nav" id="navbar">
+    <a href="#hero" class="brand">abhishek<span class="brand-dot">.</span>dev<span class="cursor-blink"></span></a>
+    <nav class="nav-links" role="navigation" aria-label="Main navigation">
+      <a href="#about" id="nav-about">About</a>
+      <a href="#work" id="nav-work">Work</a>
+      <a href="#skills" id="nav-skills">Skills</a>
+      <a href="#log" id="nav-log">Log</a>
+      <a href="#contact" id="nav-contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <span class="status-pill"><span class="status-dot"></span>Open to internships</span>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <nav class="nav-mobile-panel" id="navMobilePanel" aria-label="Mobile navigation">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#log">Log</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+
+<main>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero">
+    <!-- Glow orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="wrap hero-grid">
+      <!-- Left -->
+      <div class="hero-left">
+        <div class="availability-badge reveal">
+          <span class="avail-dot"></span>
+          Open to internships · Available now
+        </div>
+        <div class="hero-kicker mono reveal">$ whoami</div>
+        <h1 class="reveal">
+          <span class="hero-name">Abhishek Yadav</span><br>
+          <span class="gradient-text typewriter" id="typewriter">Web Developer</span>
+        </h1>
+        <p class="hero-sub mono reveal">B.Tech (IT) · CCSU Meerut · 2nd Year</p>
+        <p class="hero-pitch reveal">
+          Second-year Information Technology student turning ideas into <strong>working web projects</strong>.
+          Currently sharpening skills through hands-on builds and hackathons —
+          looking for <strong>internship opportunities</strong> in web development.
+        </p>
+        <div class="cta-row reveal">
+          <a href="#work" class="btn btn-primary">
+            <span>View my work</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-glass">Get in touch</a>
+          <a href="Abhishek_Yadav_Resume.pdf" class="btn btn-outline" download>
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 1v9M4 7.5l3.5 3.5L11 7.5M2 13h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Resume
+          </a>
+        </div>
+        <div class="chip-row reveal">
+          <span class="chip chip-glow">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">C++</span>
+          <span class="chip">DSA</span>
+        </div>
+        <div class="social-links reveal">
+          <a href="https://linkedin.com/in/abhishek-yadav-3794a238" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:abhishekyadav7985718872@gmail.com" aria-label="Email" class="social-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="tel:+917985718872" aria-label="Phone" class="social-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Profile card -->
+      <div class="hero-right reveal">
+        <div class="profile-card-wrap">
+          <!-- Animated gradient ring -->
+          <div class="profile-ring" id="photoRing"></div>
+          <div class="profile-card glass">
+            <div class="profile-img-wrap">
+              <img src="profile.jpeg" alt="Abhishek Yadav" class="profile-img">
+            </div>
+            <div class="profile-info">
+              <h2 class="profile-name">Abhishek Yadav</h2>
+              <p class="profile-role">Web Developer & CS Student</p>
+              <div class="profile-status">
+                <span class="status-dot"></span>
+                Available for internship
+              </div>
+              <div class="profile-badges">
+                <span>🎓 B.Tech IT</span>
+                <span>📍 Mau, UP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating stats -->
+          <div class="float-card float-left" id="floatLeft">
+            <div class="float-num gradient-text">8.01</div>
+            <div class="float-label">CGPA</div>
+          </div>
+          <div class="float-card float-right" id="floatRight">
+            <div class="float-num gradient-text">3+</div>
+            <div class="float-label">Hackathons</div>
+          </div>
+        </div>
+
+        <!-- Code terminal card -->
+        <div class="terminal-card glass">
+          <div class="terminal-header">
+            <span class="t-dot t-red"></span>
+            <span class="t-dot t-yellow"></span>
+            <span class="t-dot t-green"></span>
+            <span class="t-filename mono">portfolio.js</span>
+          </div>
+          <div class="terminal-body mono">
+            <div class="t-line"><span class="t-num">01</span><span class="t-code" style="color:#a78bfa">const dev = new Abhishek();</span></div>
+            <div class="t-line"><span class="t-num">02</span><span class="t-code" style="color:#60a5fa">dev.skills = ['HTML','CSS','JS'];</span></div>
+            <div class="t-line"><span class="t-num">03</span><span class="t-code" style="color:#34d399">dev.status = "Open to Internship";</span></div>
+            <div class="t-line"><span class="t-num">04</span><span class="t-code" style="color:#f472b6">dev.build(yourIdea);</span></div>
+            <div class="t-line"><span class="t-num">05</span><span class="t-cursor-blink">█</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-hint">
+      <span class="mono">Scroll</span>
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT / BENTO ===== -->
+  <section id="about" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Overview</div>
+        <h2>A bit about me</h2>
+      </div>
+      <div class="bento">
+        <!-- Bio -->
+        <div class="glass b-bio reveal">
+          <p class="lead">Building the web, one project at a time.</p>
+          <p>I'm currently pursuing a <strong>B.Tech in Information Technology</strong> at Chaudhary Charan Singh University (CCSU), Meerut.</p>
+          <p>I like building things that solve real, everyday problems — my most recent project, <strong>StudioWheel</strong>, is a rental platform giving university students an affordable way to get around campus.</p>
+          <p>Outside of coursework, I've taken part in several hackathons, sharpening how I work under pressure and build as part of a team.</p>
+        </div>
+
+        <!-- Education stat -->
+        <div class="glass b-edu reveal">
+          <div class="stat-ring">
+            <svg viewBox="0 0 100 100" class="ring-svg">
+              <circle cx="50" cy="50" r="42" class="ring-bg"/>
+              <circle cx="50" cy="50" r="42" class="ring-fill" id="cgpaRing" stroke-dasharray="0 264"/>
+            </svg>
+            <div class="stat-center">
+              <div class="stat gradient-text">8.01</div>
+              <div class="stat-sub">/ 10</div>
+            </div>
+          </div>
+          <div class="edu-name">B.Tech, Information Technology</div>
+          <div class="edu-date mono">CCSU Meerut · 2025 — 2029</div>
+        </div>
+
+        <!-- Skills -->
+        <div class="glass b-skills reveal">
+          <h4>Tech Stack</h4>
+          <div class="skills-wrap">
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">C++</span>
+            <span class="chip">C</span>
+            <span class="chip">DSA</span>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="glass b-status reveal">
+          <div class="b-label">Status</div>
+          <div class="status-val"><span class="status-dot"></span>Open to internships</div>
+          <div class="status-note mono">Full-time or part-time, remote or on-site</div>
+        </div>
+
+        <!-- Location -->
+        <div class="glass b-loc reveal">
+          <div class="b-label">Location</div>
+          <div class="loc-val">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Mau, Uttar Pradesh
+          </div>
+          <div class="loc-note mono">Open to relocation</div>
+        </div>
+
+        <!-- Hackathon -->
+        <div class="glass b-hack reveal">
+          <div class="hack-icon">⚡</div>
+          <div>
+            <div class="hack-title">Hackathon Participant</div>
+            <div class="hack-sub">Problem-solving · Teamwork · Rapid builds</div>
+            <div class="hack-count">3+ events completed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WORK / PROJECTS ===== -->
+  <section id="work" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Work</div>
+        <h2>Projects</h2>
+        <p class="section-lead">What I've built so far — with more on the way.</p>
+      </div>
+      <div class="work-grid">
+
+        <!-- StudioWheel -->
+        <div class="glass project-card reveal" tabindex="0">
+          <div class="project-cover cover-a">
+            <div class="cover-glow cover-glow-a"></div>
+            <span class="cover-initial">S</span>
+            <div class="project-cover-tags">
+              <span class="cover-tag">Featured</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>StudioWheel</h3>
+            <p class="project-desc">A web-based vehicle rental platform giving university students an affordable way to get around campus. Features flexible hourly, daily, and monthly rental plans. Built end-to-end with HTML, CSS, and JavaScript with a focus on usability and student-friendly UX.</p>
+            <div class="project-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-links-pending mono">Live demo &amp; repo coming soon ↗</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Portfolio Website -->
+        <div class="glass project-card reveal" tabindex="0">
+          <div class="project-cover cover-c">
+            <div class="cover-glow cover-glow-c"></div>
+            <span class="cover-initial">P</span>
+          </div>
+          <div class="project-body">
+            <h3>Portfolio Website</h3>
+            <p class="project-desc">This very portfolio — built from scratch with vanilla HTML, CSS, and JavaScript. Features a Three.js 3D animated background, glassmorphism design, scroll reveal animations, and a responsive layout.</p>
+            <div class="project-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Three.js</span>
+            </div>
+            <div class="project-footer">
+              <div class="project-links-pending mono">You're looking at it ✓</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coming soon -->
+        <div class="glass project-card placeholder reveal" tabindex="0">
+          <div class="project-cover cover-b">
+            <div class="cover-glow cover-glow-b"></div>
+            <span class="cover-initial">+</span>
+          </div>
+          <div class="project-body">
+            <h3>More on the way</h3>
+            <p class="project-desc">I'm actively building. New projects will land here as I finish them — check back soon.</p>
+            <div class="project-footer">
+              <span class="badge-soon">Coming soon</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Expertise</div>
+        <h2>Skills &amp; Tools</h2>
+        <p class="section-lead">A snapshot of my current technical toolkit.</p>
+      </div>
+      <div class="skills-grid">
+
+        <!-- Languages -->
+        <div class="glass skill-card reveal">
+          <div class="skill-card-icon">📝</div>
+          <h3 class="skill-card-title">Languages</h3>
+          <div class="skill-bars">
+            <div class="skill-item">
+              <div class="skill-meta"><span>C / C++</span><span class="skill-pct">75%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-pct="75" style="background:linear-gradient(90deg,#8B6CFF,#2FE0C3)"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-meta"><span>JavaScript</span><span class="skill-pct">70%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-pct="70" style="background:linear-gradient(90deg,#F5A93B,#8B6CFF)"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-meta"><span>Python (Learning)</span><span class="skill-pct">40%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-pct="40" style="background:linear-gradient(90deg,#2FE0C3,#8B6CFF)"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web -->
+        <div class="glass skill-card reveal">
+          <div class="skill-card-icon">🌐</div>
+          <h3 class="skill-card-title">Web Dev</h3>
+          <div class="skill-bars">
+            <div class="skill-item">
+              <div class="skill-meta"><span>HTML5</span><span class="skill-pct">90%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-pct="90" style="background:linear-gradient(90deg,#F5A93B,#FF6B35)"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-meta"><span>CSS3</span><span class="skill-pct">85%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-pct="85" style="background:linear-gradient(90deg,#2FE0C3,#8B6CFF)"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-meta"><span>Responsive Design</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-pct="80" style="background:linear-gradient(90deg,#8B6CFF,#2FE0C3)"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CS Core -->
+        <div class="glass skill-card reveal">
+          <div class="skill-card-icon">🧠</div>
+          <h3 class="skill-card-title">CS Fundamentals</h3>
+          <div class="skills-wrap" style="margin-top:16px">
+            <span class="chip">Data Structures</span>
+            <span class="chip">Algorithms</span>
+            <span class="chip">OOP</span>
+            <span class="chip">Problem Solving</span>
+            <span class="chip">DBMS (learning)</span>
+            <span class="chip">OS concepts</span>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="glass skill-card reveal">
+          <div class="skill-card-icon">🛠</div>
+          <h3 class="skill-card-title">Tools</h3>
+          <div class="skills-wrap" style="margin-top:16px">
+            <span class="chip">Git</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">VS Code</span>
+            <span class="chip">Chrome DevTools</span>
+            <span class="chip">Figma (basic)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LOG / BLOG ===== -->
+  <section id="log" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Log</div>
+        <h2>Writing</h2>
+        <p class="section-lead">Notes on what I'm learning, coming soon.</p>
+      </div>
+      <div class="glass log-empty reveal">
+        <div class="log-icon">✎</div>
+        <p>Nothing published yet — I'm working on my first post.</p>
+        <span class="badge-soon">Coming soon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESUME ===== -->
+  <section id="resume" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Resume</div>
+        <h2>Education &amp; Experience</h2>
+      </div>
+      <div class="glass resume-panel reveal">
+        <div class="resume-col">
+          <h4>Education</h4>
+          <div class="timeline">
+            <div class="t-item">
+              <div class="t-top"><span>CCSU Meerut — B.Tech, IT</span><span class="t-date">2025 — 2029</span></div>
+              <div class="t-sub">CGPA 8.01/10.0 &nbsp;<span class="t-pill">Sem 1: 8.2 · Sem 2: 7.9</span></div>
+            </div>
+            <div class="t-item">
+              <div class="t-top"><span>Sunbeam School, Varanasi — Class XII</span><span class="t-date">2024</span></div>
+              <div class="t-sub">73%</div>
+            </div>
+            <div class="t-item">
+              <div class="t-top"><span>Sunbeam School, Varanasi — Class X</span><span class="t-date">2022</span></div>
+              <div class="t-sub">84%</div>
+            </div>
+          </div>
+        </div>
+        <div class="resume-col">
+          <h4>Skills</h4>
+          <div class="skills-wrap">
+            <span class="chip">C</span>
+            <span class="chip">C++</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">DSA</span>
+            <span class="chip">Programming Fundamentals</span>
+            <span class="chip">Problem Solving</span>
+          </div>
+          <h4>Achievements</h4>
+          <ul class="achv-list">
+            <li>Participated in multiple hackathons — hands-on experience in problem-solving, teamwork &amp; rapid development</li>
+            <li>Earned multiple hackathon participation certificates</li>
+            <li>Completed several technology &amp; skill-development certifications</li>
+          </ul>
+        </div>
+        <div class="resume-download">
+          <p>Full details and references available on request.</p>
+          <a href="Abhishek_Yadav_Resume.pdf" class="btn btn-glass" download>
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 1v9M4 7.5l3.5 3.5L11 7.5M2 13h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download résumé (PDF) ↓
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section">
+    <div class="wrap">
+      <div class="glass contact-panel reveal">
+        <div class="contact-orb contact-orb-1"></div>
+        <div class="contact-orb contact-orb-2"></div>
+        <div class="eyebrow" style="justify-content:center;">Let's Connect</div>
+        <h2>Let's build <span class="gradient-text">something together.</span></h2>
+        <p class="contact-lead">Looking for internship opportunities in web development — happy to connect and chat.</p>
+
+        <div class="contact-cards">
+          <a href="mailto:abhishekyadav7985718872@gmail.com" class="contact-card glass">
+            <div class="contact-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-card-body">
+              <div class="contact-card-label">Email</div>
+              <div class="contact-card-val">abhishekyadav7985718872@gmail.com</div>
+            </div>
+            <div class="contact-card-arrow">↗</div>
+          </a>
+          <a href="tel:+917985718872" class="contact-card glass">
+            <div class="contact-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="contact-card-body">
+              <div class="contact-card-label">Phone</div>
+              <div class="contact-card-val">+91 79857 18872</div>
+            </div>
+            <div class="contact-card-arrow">↗</div>
+          </a>
+          <a href="https://linkedin.com/in/abhishek-yadav-3794a238" target="_blank" rel="noopener" class="contact-card glass">
+            <div class="contact-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div class="contact-card-body">
+              <div class="contact-card-label">LinkedIn</div>
+              <div class="contact-card-val">abhishek-yadav-3794a238</div>
+            </div>
+            <div class="contact-card-arrow">↗</div>
+          </a>
+        </div>
+
+        <div class="contact-bottom">
+          <span class="chip"><span class="status-dot"></span>Available for internships</span>
+          <span class="chip">📍 Mau, Uttar Pradesh</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="mono">© 2026 Abhishek Yadav · Built with care &amp; lots of ☕</p>
+    <a href="#hero" class="to-top mono">Back to top ↑</a>
+  </div>
+</footer>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 13V5M5 9l4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="background3d.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
