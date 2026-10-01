@@ -20,7 +20,7 @@ const schema = z.object({
   description: z.string().min(20, 'Please describe your project in at least 20 characters'),
   features: z.string().optional(),
   referenceWebsite: z.string().optional(),
-  preferredContact: z.string().default('Email'),
+  preferredContact: z.string().optional(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -38,7 +38,7 @@ const serviceCategories = [
 
 const projectTypes = ['Website', 'Web Application', 'AI/ML', 'E-commerce', 'Portfolio', 'Business Website', 'College Project', 'Bug Fix', 'Custom Software', 'Other'];
 const budgets = ['Under ₹5,000', '₹5,000–₹10,000', '₹10,000–₹25,000', '₹25,000–₹50,000', '₹50,000+'];
-const contactMethods = ['Email', 'WhatsApp', 'Phone'];
+const contactMethods = ['Email', 'Phone'];
 
 export default function FreelanceSection() {
   const ref = useRef(null);
@@ -199,8 +199,8 @@ export default function FreelanceSection() {
 
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-sm text-[#a0a0b8] mb-1.5">Phone / WhatsApp</label>
-                  <input {...register('phone')} placeholder="+91 98765 43210" className="input-field" />
+                  <label className="block text-sm text-[#a0a0b8] mb-1.5">Phone Number</label>
+                  <input {...register('phone')} placeholder="+91 79857 18872" className="input-field" />
                 </div>
                 <div>
                   <label className="block text-sm text-[#a0a0b8] mb-1.5">Company / Organization</label>

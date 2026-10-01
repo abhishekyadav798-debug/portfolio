@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space" });
 
 export const metadata: Metadata = {
-  title: "Abhishek Yadav | Freelance Software Engineer & Full-Stack Developer",
-  description: "Abhishek Yadav – Freelance Software Engineer helping startups and businesses build modern websites, web applications, AI-powered solutions and scalable digital products. Based in India.",
+  title: "Technorats | Software Engineer & Full-Stack Developer",
+  description: "Technorats – Software Engineer helping startups and businesses build modern websites, web applications, AI-powered solutions and scalable digital products. Based in India.",
   keywords: ["freelance software engineer", "full stack developer", "web development India", "React developer", "Node.js developer", "AI integration", "hire developer India", "Abhishek Yadav"],
   authors: [{ name: "Abhishek Yadav" }],
   creator: "Abhishek Yadav",
@@ -16,14 +16,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: process.env.NEXT_PUBLIC_SITE_URL,
-    siteName: "Abhishek Yadav – Freelance Software Engineer",
-    title: "Abhishek Yadav | Freelance Software Engineer",
+    siteName: "Technorats",
+    title: "Technorats | Software Engineer",
     description: "Building digital products that actually work. Hire a Full-Stack Developer & AI Enthusiast from India.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Abhishek Yadav Portfolio" }]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abhishek Yadav | Freelance Software Engineer",
+    title: "Technorats | Software Engineer",
     description: "Building digital products that actually work."
   },
   robots: { index: true, follow: true },

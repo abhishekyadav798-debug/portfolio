@@ -2,7 +2,8 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, BookOpen, X, Filter, Search } from 'lucide-react';
+import { ExternalLink, BookOpen, X, Filter, Search } from 'lucide-react';
+import { Github } from '@/components/Icons';
 import { projectsAPI } from '@/lib/api';
 
 const filters = ['All', 'Web', 'AI/ML', 'Full Stack', 'Software', 'Hackathon'];

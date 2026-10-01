@@ -57,8 +57,8 @@ export default function Navbar() {
             : 'bg-transparent'
         }`}
       >
-        <div className="section-container">
-          <div className="flex items-center justify-between h-16 md:h-18">
+        <div className="w-full max-w-[1536px] mx-auto px-6 md:px-12">
+          <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <button
               onClick={() => handleNavClick('#home')}
@@ -68,7 +68,7 @@ export default function Navbar() {
                 <Code2 className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="font-space font-bold text-white text-lg leading-none">Abhishek</span>
+                <span className="font-space font-bold text-white text-lg leading-none">Technorats</span>
                 <span className="block text-[10px] text-indigo-400 leading-none mt-0.5 font-medium">Software Engineer</span>
               </div>
             </button>

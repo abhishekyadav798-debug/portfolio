@@ -1,11 +1,19 @@
 const { Resend } = require('resend');
-const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Lazy init — server won't crash if RESEND_API_KEY is missing
+function getResend() {
+  if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY.startsWith('re_placeholder')) {
+    return null;
+  }
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 const FROM_EMAIL = 'Abhishek Yadav Portfolio <onboarding@resend.dev>';
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 
 // Send confirmation to client after project request
 async function sendRequestConfirmation(toEmail, clientName, requestId) {
+  const resend = getResend(); if (!resend) { console.log('[Email] Skipped - no API key'); return; }
   await resend.emails.send({
     from: FROM_EMAIL,
     to: toEmail,
@@ -52,7 +60,7 @@ async function sendRequestConfirmation(toEmail, clientName, requestId) {
 
             <div style="margin-top:32px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.1); text-align:center;">
               <p style="color:#6b7280; font-size:13px; margin:0;">— Abhishek Yadav</p>
-              <p style="color:#6b7280; font-size:12px; margin:4px 0 0;">Freelance Software Engineer | Full-Stack Developer</p>
+              <p style="color:#6b7280; font-size:12px; margin:4px 0 0;">Software Engineer | Full-Stack Developer</p>
             </div>
           </div>
         </div>
@@ -64,6 +72,7 @@ async function sendRequestConfirmation(toEmail, clientName, requestId) {
 
 // Notify admin of new project request
 async function sendAdminNotification(requestData, requestId) {
+  const resend = getResend(); if (!resend) { console.log('[Email] Skipped - no API key'); return; }
   await resend.emails.send({
     from: FROM_EMAIL,
     to: ADMIN_EMAIL,
@@ -97,6 +106,7 @@ async function sendAdminNotification(requestData, requestId) {
 
 // Send contact form reply notification
 async function sendContactConfirmation(toEmail, clientName, subject) {
+  const resend = getResend(); if (!resend) { console.log('[Email] Skipped - no API key'); return; }
   await resend.emails.send({
     from: FROM_EMAIL,
     to: toEmail,
@@ -109,7 +119,7 @@ async function sendContactConfirmation(toEmail, clientName, subject) {
           <h2 style="color:#a78bfa; margin-top:0;">Message Received! ✉️</h2>
           <p style="color:#d1d5db;">Hi <strong>${clientName}</strong>,</p>
           <p style="color:#d1d5db; line-height:1.6;">Thank you for your message regarding "<strong>${subject}</strong>". I've received it and will reply within <strong>24 hours</strong>.</p>
-          <p style="color:#9ca3af; font-size:13px; margin-top:24px;">— Abhishek Yadav | Freelance Software Engineer</p>
+          <p style="color:#9ca3af; font-size:13px; margin-top:24px;">— Abhishek Yadav | Software Engineer</p>
         </div>
       </body>
       </html>
@@ -118,6 +128,7 @@ async function sendContactConfirmation(toEmail, clientName, subject) {
 }
 
 async function sendAdminContactNotification(contactData) {
+  const resend = getResend(); if (!resend) { console.log('[Email] Skipped - no API key'); return; }
   await resend.emails.send({
     from: FROM_EMAIL,
     to: ADMIN_EMAIL,

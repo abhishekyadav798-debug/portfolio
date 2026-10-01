@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, MessageSquare, Github, Linkedin, Mail, CheckCircle, Zap } from 'lucide-react';
+import { ArrowRight, Play, MessageSquare, Mail, CheckCircle, Zap } from 'lucide-react';
+import { Github, Linkedin } from '@/components/Icons';
 import Image from 'next/image';
 
 const codeSnippets = [
@@ -20,9 +21,9 @@ const highlights = [
 ];
 
 const socialLinks = [
-  { icon: Github, href: process.env.NEXT_PUBLIC_GITHUB || '#', label: 'GitHub' },
-  { icon: Linkedin, href: process.env.NEXT_PUBLIC_LINKEDIN || '#', label: 'LinkedIn' },
-  { icon: Mail, href: `mailto:${process.env.NEXT_PUBLIC_EMAIL || 'abhishek@example.com'}`, label: 'Email' },
+  { icon: Github, href: process.env.NEXT_PUBLIC_GITHUB || 'https://github.com/abhishekyadav798-debug', label: 'GitHub' },
+  { icon: Linkedin, href: process.env.NEXT_PUBLIC_LINKEDIN || 'https://www.linkedin.com/in/abhishek-yadav-3794a2384', label: 'LinkedIn' },
+  { icon: Mail, href: `mailto:${process.env.NEXT_PUBLIC_EMAIL || 'abhishekyadav798571@gmail.com'}`, label: 'Email' },
 ];
 
 export default function HeroSection() {
@@ -38,11 +39,11 @@ export default function HeroSection() {
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-900/10 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="section-container w-full py-20 md:py-0">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[calc(100vh-80px)]">
+      <div className="section-container w-full py-20 md:py-8 lg:py-0">
+        <div className="grid lg:grid-cols-12 gap-10 xl:gap-16 items-center min-h-[calc(100vh-80px)]">
           
           {/* Left Content */}
-          <div className="flex flex-col justify-center">
+          <div className="lg:col-span-7 flex flex-col justify-center">
             {/* Availability badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -89,7 +90,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-[#a0a0b8] text-lg leading-relaxed mb-8 max-w-xl"
             >
-              Freelance Software Engineer helping <strong className="text-white">individuals, startups and businesses</strong> build modern websites, web applications, AI-powered solutions and scalable digital products.
+              Software Engineer helping <strong className="text-white">individuals, startups and businesses</strong> build modern websites, web applications, AI-powered solutions and scalable digital products.
             </motion.p>
 
             {/* Highlights */}
@@ -165,10 +166,10 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex flex-col items-center gap-6"
+            className="lg:col-span-5 flex flex-col items-center justify-center gap-6 w-full"
           >
             {/* Profile + Code card */}
-            <div className="relative w-full max-w-sm mx-auto">
+            <div className="relative w-full max-w-[430px] mx-auto">
               {/* Animated blob background */}
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-600/20 animate-morph rounded-3xl blur-xl" />
               
@@ -205,7 +206,7 @@ export default function HeroSection() {
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -left-8 top-12 glass-card px-3 py-2 !transform-none"
+                className="absolute -left-6 top-10 glass-card px-3.5 py-2 !transform-none shadow-xl"
               >
                 <div className="text-2xl font-bold gradient-text-blue font-space">15+</div>
                 <div className="text-xs text-[#a0a0b8]">Projects</div>
@@ -214,7 +215,7 @@ export default function HeroSection() {
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                className="absolute -right-8 top-20 glass-card px-3 py-2 !transform-none"
+                className="absolute -right-6 top-16 glass-card px-3.5 py-2 !transform-none shadow-xl"
               >
                 <div className="text-2xl font-bold gradient-text-blue font-space">10+</div>
                 <div className="text-xs text-[#a0a0b8]">Technologies</div>
@@ -222,7 +223,7 @@ export default function HeroSection() {
             </div>
 
             {/* Code snippet card */}
-            <div className="w-full max-w-sm mx-auto glass-card overflow-hidden !hover:transform-none">
+            <div className="w-full max-w-[430px] mx-auto glass-card overflow-hidden !hover:transform-none shadow-xl">
               {/* Terminal header */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-[rgba(255,255,255,0.06)] bg-[rgba(0,0,0,0.3)]">
                 <div className="w-3 h-3 rounded-full bg-red-500/70" />

@@ -80,7 +80,7 @@ export default function AboutSection() {
                 </div>
                 <div>
                   <h3 className="font-space font-bold text-white text-lg mb-1">Abhishek Yadav</h3>
-                  <p className="text-indigo-400 text-sm">Freelance Software Engineer · Full-Stack Developer</p>
+                  <p className="text-indigo-400 text-sm">Software Engineer · Full-Stack Developer</p>
                 </div>
               </div>
 

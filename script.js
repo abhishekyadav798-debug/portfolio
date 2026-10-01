@@ -247,5 +247,133 @@
   document.querySelectorAll('.bento > div').forEach((box, i) => {
     box.style.transitionDelay = `${i * 60}ms`;
   });
+  document.querySelectorAll('.freelance-svc-card').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 70}ms`;
+  });
+
+  // ================================================================
+  // 13. FREELANCE SECTION & FORM INTERACTION
+  // ================================================================
+  const flCards = document.querySelectorAll('.freelance-svc-card');
+  const flTypeSelect = document.getElementById('fl-type');
+  const flForm = document.getElementById('freelanceForm');
+  const flStatus = document.getElementById('fl-status');
+  const flSubmitBtn = document.getElementById('fl-submit-btn');
+
+  // Service card quick-select
+  flCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      flCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      const projectType = card.getAttribute('data-type');
+      if (flTypeSelect && projectType) {
+        flTypeSelect.value = projectType;
+      }
+
+      // Smooth scroll to form on mobile
+      if (window.innerWidth < 768) {
+        const formWrap = document.getElementById('project-form-wrap');
+        if (formWrap) {
+          formWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // Form submission
+  if (flForm) {
+    flForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('fl-name')?.value.trim();
+      const email = document.getElementById('fl-email')?.value.trim();
+      const phone = document.getElementById('fl-phone')?.value.trim();
+      const projectType = document.getElementById('fl-type')?.value;
+      const budget = document.getElementById('fl-budget')?.value;
+      const deadline = document.getElementById('fl-deadline')?.value.trim();
+      const description = document.getElementById('fl-desc')?.value.trim();
+
+      if (!name || !email || !description) {
+        if (flStatus) {
+          flStatus.className = 'fl-status-box error';
+          flStatus.textContent = 'Please fill in all required fields (Name, Email, and Project Details).';
+          flStatus.style.display = 'block';
+        }
+        return;
+      }
+
+      // Button loading state
+      const originalBtnHtml = flSubmitBtn ? flSubmitBtn.innerHTML : '';
+      if (flSubmitBtn) {
+        flSubmitBtn.disabled = true;
+        flSubmitBtn.innerHTML = `<span>Submitting...</span>`;
+      }
+
+      const requestPayload = {
+        name,
+        email,
+        phone,
+        projectType,
+        budget,
+        deadline,
+        description
+      };
+
+      try {
+        // Try posting to local backend if available
+        const res = await fetch('http://localhost:5000/api/requests', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestPayload)
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (flStatus) {
+            flStatus.className = 'fl-status-box success';
+            flStatus.innerHTML = `
+              <strong>🎉 Project Request Submitted Successfully!</strong><br>
+              ${data.requestId ? `<span style="font-family:'IBM Plex Mono'; font-size:13px;">Request ID: <strong>${data.requestId}</strong></span><br>` : ''}
+              Thank you, ${name}! I have received your request and will review it and reply within 24 hours.
+            `;
+            flStatus.style.display = 'block';
+          }
+          flForm.reset();
+        } else {
+          throw new Error('Server responded with error');
+        }
+      } catch (err) {
+        // Fallback: direct WhatsApp message format + direct email
+        const waMsg = encodeURIComponent(
+          `*New Freelance Project Request*\n\n` +
+          `*Name:* ${name}\n` +
+          `*Email:* ${email}\n` +
+          `*Phone:* ${phone || 'Not provided'}\n` +
+          `*Type:* ${projectType}\n` +
+          `*Budget:* ${budget}\n` +
+          `*Deadline:* ${deadline || 'Flexible'}\n` +
+          `*Details:* ${description}`
+        );
+
+        if (flStatus) {
+          flStatus.className = 'fl-status-box success';
+          flStatus.innerHTML = `
+            <strong>✅ Request recorded!</strong><br>
+            To get the fastest response, send your details directly via WhatsApp:<br>
+            <a href="https://wa.me/917985718872?text=${waMsg}" target="_blank" rel="noopener" class="btn btn-wa" style="margin-top:10px; display:inline-flex; font-size:13px; padding:8px 18px;">
+              <span>Open in WhatsApp &amp; Send</span> ↗
+            </a>
+          `;
+          flStatus.style.display = 'block';
+        }
+      } finally {
+        if (flSubmitBtn) {
+          flSubmitBtn.disabled = false;
+          flSubmitBtn.innerHTML = originalBtnHtml;
+        }
+      }
+    });
+  }
 
 })();
