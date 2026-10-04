@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "env": {
+    "NEXT_PUBLIC_API_URL": {
+      "description": "Backend API URL from Render",
+      "required": true
+    },
+    "NEXT_PUBLIC_SITE_URL": {
+      "description": "Vercel deployment URL",
+      "required": true
+    },
+    "NEXT_PUBLIC_EMAIL": {
+      "description": "Contact email address"
+    },
+    "NEXT_PUBLIC_PHONE": {
+      "description": "Contact phone number"
+    },
+    "NEXT_PUBLIC_GITHUB": {
+      "description": "GitHub profile URL"
+    },
+    "NEXT_PUBLIC_LINKEDIN": {
+      "description": "LinkedIn profile URL"
+    }
+  }
+}
